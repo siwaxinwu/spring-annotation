@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/context/spring-context.xsd ">
+
+
+<!--
+    <context:component-scan base-package="io.roy.spring.plugins.register.bean1"></context:component-scan>
+-->
+
+    <context:property-placeholder location="classpath:person.properties"/>
+    <bean id = "person" class="io.roy.spring.plugins.register.bean.Person">
+        <property name="name" value="roy"></property>
+        <property name="age" value="18"></property>
+        <property name="nickName" value="${person.nickName}"/>
+    </bean>
+
+    <!--指定他的初始化和销毁方法-->
+    <bean id="student" class="io.roy.spring.plugins.register.bean.Student" init-method="init" destroy-method="destroy"></bean>
+</beans>
